@@ -46,6 +46,12 @@ public class VentanaPrincipal extends JFrame {
             ventanaAgregar.setVisible(true);
         });
         
+        botonListar.addActionListener(e -> {
+
+            VentanaListar ventanaListar = new VentanaListar();
+
+            ventanaListar.setVisible(true);
+        });
         
         
 
