@@ -63,19 +63,23 @@ public class Main {
 	}
 
 	private static String leerTexto(String mensaje) {
-		String texto;
 
-		do {
-			System.out.print(mensaje);
-			texto = teclado.nextLine().trim();
+	    String texto;
 
-			if (texto.isEmpty()) {
-				System.out.println("El campo no puede estar vacío.");
-			}
+	    do {
+	        System.out.print(mensaje);
+	        texto = teclado.nextLine().trim();
 
-		} while (texto.isEmpty());
+	        if (texto.isEmpty()) {
+	            System.out.println("El campo no puede estar vacío.");
+	        } else if (!texto.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+	            System.out.println("Solo se permiten letras y espacios.");
+	        }
 
-		return texto;
+	    } while (texto.isEmpty()
+	            || !texto.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+"));
+
+	    return texto;
 	}
 
 	private static String leerNombre() {
@@ -89,9 +93,11 @@ public class Main {
 				System.out.println("El nombre no puede estar vacío.");
 			} else if (nombre.length() < 3) {
 				System.out.println("El nombre debe tener al menos 3 caracteres.");
+			} else if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+				System.out.println("El nombre solo puede contener letras y espacios.");
 			}
 
-		} while (nombre.isEmpty() || nombre.length() < 3);
+		} while (nombre.isEmpty() || nombre.length() < 3 || !nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+"));
 
 		return nombre;
 	}

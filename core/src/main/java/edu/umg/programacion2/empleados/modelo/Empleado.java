@@ -9,7 +9,7 @@ public class Empleado {
 	private double salario;
 	private LocalDate fechaContratacion;
 	private boolean activo;
-	
+
 	public Empleado(int id, String nombre, String departamento, double salario, LocalDate fechaContratacion,
 			boolean activo) {
 		super();
@@ -20,45 +20,63 @@ public class Empleado {
 		this.fechaContratacion = fechaContratacion;
 		this.activo = activo;
 	}
-	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
+
+	public Empleado(String nombre, String departamento, double salario, LocalDate fechaContratacion, boolean activo) {
+
 		this.nombre = nombre;
-	}
-	public String getDepartamento() {
-		return departamento;
-	}
-	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
-	}
-	public double getSalario() {
-		return salario;
-	}
-	public void setSalario(double salario) {
 		this.salario = salario;
-	}
-	public LocalDate getFechaContratacion() {
-		return fechaContratacion;
-	}
-	public void setFechaContratacion(LocalDate fechaContratacion) {
 		this.fechaContratacion = fechaContratacion;
-	}
-	public boolean isActivo() {
-		return activo;
-	}
-	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+	public LocalDate getFechaContratacion() {
+		return fechaContratacion;
+	}
+
+	public void setFechaContratacion(LocalDate fechaContratacion) {
+		this.fechaContratacion = fechaContratacion;
+	}
+
+	public boolean isActivo() {
+		return activo;
+	}
+
+	public void setActivo(boolean activo) {
+		this.activo = activo;
+	}
 
 	@Override
 	public String toString() {
@@ -66,8 +84,4 @@ public class Empleado {
 				+ ", fechaContratacion=" + fechaContratacion + ", activo=" + activo + "]";
 	}
 
-
-	
-	
-	
 }
