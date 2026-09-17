@@ -1,8 +1,10 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -35,8 +37,11 @@ public class VentanaEliminar extends JFrame {
     private void crearFormulario() {
 
     	JPanel panel = new JPanel(new FlowLayout());
+    	panel.setBackground(new Color(236, 240, 241));
 
         JLabel etiquetaId = new JLabel("ID del empleado:");
+        etiquetaId.setFont(new Font("Arial", Font.BOLD, 14));
+        etiquetaId.setForeground(new Color(44, 62, 80));
 
         campoId = new JTextField(10);
 
@@ -44,11 +49,33 @@ public class VentanaEliminar extends JFrame {
         botonEliminar.setPreferredSize(new Dimension(100, 35));
 
         botonEliminar.addActionListener(e -> eliminarEmpleado());
+        botonEliminar.setBackground(new Color(231, 76, 60));
+        botonEliminar.setForeground(Color.WHITE);
+        botonEliminar.setFont(new Font("Arial", Font.BOLD, 14));
+        botonEliminar.setFocusPainted(false);
+        
+        
+        JButton botonRegresar = new JButton("Regresar al menú");
+        botonRegresar.setPreferredSize(new Dimension(100, 50));
+        botonRegresar.addActionListener(e -> {
+
+            dispose();
+
+            VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+            ventanaPrincipal.setVisible(true);
+        });
+        botonRegresar.setBackground(new Color(44, 62, 80));
+        botonRegresar.setForeground(Color.WHITE);
+        botonRegresar.setFont(new Font("Arial", Font.BOLD, 14));
+        botonRegresar.setFocusPainted(false);
+        
+        
+        
 
         panel.add(etiquetaId);
         panel.add(campoId);
         panel.add(botonEliminar);
-
+        panel.add(botonRegresar);
         add(panel, BorderLayout.CENTER);
     }
 

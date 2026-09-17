@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -19,10 +21,17 @@ public class VentanaPrincipal extends JFrame {
     }
 
     private void crearMenu() {
+    	
+    	Color azul = new Color(52, 152, 219);
+    	Color azulOscuro = new Color(41, 128, 185);
+    	Color rojo = new Color(231, 76, 60);
 
         JPanel panel = new JPanel();
 
         panel.setLayout(new GridLayout(5, 1, 10, 10));
+        panel.setBackground(new Color(236, 240, 241));
+        
+        
 
         JButton botonAgregar = new JButton("Agregar empleado");
         JButton botonListar = new JButton("Listar empleados");
@@ -38,6 +47,33 @@ public class VentanaPrincipal extends JFrame {
         panel.add(botonSalir);
 
         add(panel);
+       
+        
+        botonAgregar.setForeground(Color.WHITE);
+        botonListar.setForeground(Color.WHITE);
+        botonActualizar.setForeground(Color.WHITE);
+        botonEliminar.setForeground(Color.WHITE);
+        botonSalir.setForeground(Color.WHITE);
+
+        botonAgregar.setBackground(azul);
+        botonListar.setBackground(azul);
+        botonActualizar.setBackground(azulOscuro);
+        botonEliminar.setBackground(rojo);
+        botonSalir.setBackground(Color.DARK_GRAY);
+        
+        Font fuente = new Font("Arial", Font.BOLD, 15);
+
+        botonAgregar.setFont(fuente);
+        botonListar.setFont(fuente);
+        botonActualizar.setFont(fuente);
+        botonEliminar.setFont(fuente);
+        botonSalir.setFont(fuente);
+        
+        botonAgregar.setFocusPainted(false);
+        botonListar.setFocusPainted(false);
+        botonActualizar.setFocusPainted(false);
+        botonEliminar.setFocusPainted(false);
+        botonSalir.setFocusPainted(false);
         
         botonAgregar.addActionListener(e -> {
 

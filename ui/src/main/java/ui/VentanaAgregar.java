@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -42,6 +44,14 @@ public class VentanaAgregar extends JFrame {
 		JPanel panel = new JPanel();
 
 		panel.setLayout(new GridLayout(6, 2, 10, 10));
+		Color fondo = new Color(236, 240, 241);
+		Color azul = new Color(52, 152, 219);
+		Color rojo = new Color(231, 76, 60);
+		Color texto = new Color(44, 62, 80);
+		panel.setBackground(fondo);
+		panel.setBorder(
+			    javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20)
+			);
 
 		JLabel etiquetaNombre = new JLabel("Nombre:");
 		campoNombre = new JTextField();
@@ -88,7 +98,42 @@ public class VentanaAgregar extends JFrame {
 		botonGuardar.addActionListener(e -> guardarEmpleado());
 
 		botonCancelar.addActionListener(e -> dispose());
+		
+	
+		Font fuente = new Font("Arial", Font.BOLD, 14);
+
+
+		botonGuardar.setFont(fuente);
+		botonGuardar.setBackground(azul);
+		botonGuardar.setForeground(Color.WHITE);
+		botonGuardar.setFocusPainted(false);
+
+
+		botonCancelar.setFont(fuente);
+		botonCancelar.setBackground(rojo);
+		botonCancelar.setForeground(Color.WHITE);
+		botonCancelar.setFocusPainted(false);
+		
+		etiquetaNombre.setFont(fuente);
+		etiquetaDepartamento.setFont(fuente);
+		etiquetaSalario.setFont(fuente);
+		etiquetaFecha.setFont(fuente);
+		etiquetaActivo.setFont(fuente);
+
+		etiquetaNombre.setForeground(texto);
+		etiquetaDepartamento.setForeground(texto);
+		etiquetaSalario.setForeground(texto);
+		etiquetaFecha.setForeground(texto);
+		etiquetaActivo.setForeground(texto);
+		
+		checkActivo.setBackground(fondo);
+		checkActivo.setForeground(texto);
+		
 	}
+	
+	
+	
+	
 
 	private void guardarEmpleado() {
 

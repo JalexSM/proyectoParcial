@@ -2,6 +2,8 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -43,8 +45,13 @@ public class VentanaActualizar extends JFrame {
     private void crearFormulario() {
 
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
+        panelPrincipal.setBackground(new Color(236, 240, 241));
+        panelPrincipal.setBorder(
+            javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15)
+        );
 
         JPanel panelBusqueda = new JPanel();
+        panelBusqueda.setBackground(new Color(236, 240, 241));
 
         panelBusqueda.add(new JLabel("ID del empleado:"));
 
@@ -53,10 +60,15 @@ public class VentanaActualizar extends JFrame {
 
         JButton botonBuscar = new JButton("Buscar");
         panelBusqueda.add(botonBuscar);
+        botonBuscar.setBackground(new Color(52, 152, 219));
+        botonBuscar.setForeground(Color.WHITE);
+        botonBuscar.setFont(new Font("Arial", Font.BOLD, 14));
+        botonBuscar.setFocusPainted(false);
 
         panelPrincipal.add(panelBusqueda, BorderLayout.NORTH);
 
         JPanel panelCampos = new JPanel(new GridLayout(5, 2, 5, 5));
+        panelCampos.setBackground(new Color(236, 240, 241));
 
         panelCampos.add(new JLabel("Nombre:"));
         campoNombre = new JTextField();
@@ -81,9 +93,19 @@ public class VentanaActualizar extends JFrame {
         panelPrincipal.add(panelCampos, BorderLayout.CENTER);
 
         JButton botonActualizar = new JButton("Actualizar");
+        botonActualizar.setBackground(new Color(46, 204, 113));
+        botonActualizar.setForeground(Color.WHITE);
+        botonActualizar.setFont(new Font("Arial", Font.BOLD, 14));
+        botonActualizar.setFocusPainted(false);
         JButton botonCancelar = new JButton("Cancelar");
+        botonCancelar.setBackground(new Color(231, 76, 60));
+        botonCancelar.setForeground(Color.WHITE);
+        botonCancelar.setFont(new Font("Arial", Font.BOLD, 14));
+        botonCancelar.setFocusPainted(false);
+        
 
         JPanel panelBotones = new JPanel();
+        panelBotones.setBackground(new Color(236, 240, 241));
         panelBotones.add(botonActualizar);
         panelBotones.add(botonCancelar);
 
@@ -141,10 +163,8 @@ public class VentanaActualizar extends JFrame {
             campoNombre.setText(empleadoActual.getNombre());
             campoDepartamento.setText(empleadoActual.getDepartamento());
             campoSalario.setText(String.valueOf(empleadoActual.getSalario()));
-            campoFecha.setText(
-                    empleadoActual.getFechaContratacion().toString()
-            );
-
+            campoFecha.setText(empleadoActual.getFechaContratacion().toString() );
+            checkActivo.setSelected(empleadoActual.isActivo());
             habilitarCampos();
 
         } catch (NumberFormatException e) {
@@ -196,6 +216,7 @@ public class VentanaActualizar extends JFrame {
             empleadoActual.setDepartamento(departamento);
             empleadoActual.setSalario(salario);
             empleadoActual.setFechaContratacion(fecha);
+            empleadoActual.setActivo(checkActivo.isSelected());
 
             boolean actualizado = dao.actualizar(empleadoActual);
 
