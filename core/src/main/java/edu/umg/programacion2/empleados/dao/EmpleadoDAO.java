@@ -99,5 +99,38 @@ public class EmpleadoDAO {
 			return statement.executeUpdate() > 0;
 		}
 	}
+	
+	
+	public Empleado buscarPorId(int id) throws SQLException {
+
+	    String sql = "SELECT id, nombre, departamento, salario, "
+	               + "fecha_contratacion, activo "
+	               + "FROM empleados WHERE id = ?";
+
+	    try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
+	         PreparedStatement statement = conexion.prepareStatement(sql)) {
+
+	        statement.setInt(1, id);
+
+	        try (ResultSet resultado = statement.executeQuery()) {
+
+	            if (resultado.next()) {
+
+	                Empleado empleado = new Empleado(
+	                    resultado.getInt("id"),
+	                    resultado.getString("nombre"),
+	                    resultado.getString("departamento"),
+	                    resultado.getDouble("salario"),
+	                    resultado.getDate("fecha_contratacion").toLocalDate(),
+	                    resultado.getBoolean("activo")
+	                );
+
+	                return empleado;
+	            }
+	        }
+	    }
+
+	    return null;
+	}
 
 }
