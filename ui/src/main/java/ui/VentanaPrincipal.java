@@ -37,13 +37,14 @@ public class VentanaPrincipal extends JFrame {
         JButton botonListar = new JButton("Listar empleados");
         JButton botonActualizar = new JButton("Actualizar empleado");
         JButton botonEliminar = new JButton("Eliminar empleado");
+        JButton botonverTotales = new JButton("Ver totales");
         JButton botonSalir = new JButton("Salir");
 
         panel.add(botonAgregar);
-        
         panel.add(botonListar);
         panel.add(botonActualizar);
         panel.add(botonEliminar);
+        panel.add(botonverTotales);
         panel.add(botonSalir);
 
         add(panel);
@@ -106,7 +107,13 @@ public class VentanaPrincipal extends JFrame {
         	ventanaEliminar.setVisible(true);
         	
         });
-        
+        botonverTotales.addActionListener(e -> {
+        	
+        	VentanaTotales Ventanatotales = new VentanaTotales();
+        	
+        	Ventanatotales.setVisible(true);
+        	
+        });
         
 
         botonSalir.addActionListener(e -> {
