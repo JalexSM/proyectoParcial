@@ -10,6 +10,7 @@ import java.time.LocalDate;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,6 +28,7 @@ public class VentanaActualizar extends JFrame {
     private JTextField campoSalario;
     private JTextField campoFecha;
     private JCheckBox checkActivo;
+    private JComboBox<String> comboTipoContrato;
 
     private EmpleadoDAO dao = new EmpleadoDAO();
 
@@ -67,8 +69,9 @@ public class VentanaActualizar extends JFrame {
 
         panelPrincipal.add(panelBusqueda, BorderLayout.NORTH);
 
-        JPanel panelCampos = new JPanel(new GridLayout(5, 2, 5, 5));
+        JPanel panelCampos = new JPanel(new GridLayout(6, 2, 5, 5));
         panelCampos.setBackground(new Color(236, 240, 241));
+        
 
         panelCampos.add(new JLabel("Nombre:"));
         campoNombre = new JTextField();
@@ -88,6 +91,20 @@ public class VentanaActualizar extends JFrame {
         
         panelCampos.add(new JLabel("Estado:"));
         checkActivo = new JCheckBox("Empleado activo");
+        panelCampos.add(checkActivo);
+        
+        panelCampos.add(new JLabel("Tipo de contrato:"));
+        comboTipoContrato = new JComboBox<>(
+            new String[] {
+                "Temporal",
+                "Permanente",
+                "Por hora"
+            }
+        );
+        panelCampos.add(comboTipoContrato);
+        
+        
+        
         panelCampos.add(checkActivo);
 
         panelPrincipal.add(panelCampos, BorderLayout.CENTER);
@@ -129,6 +146,7 @@ public class VentanaActualizar extends JFrame {
         campoSalario.setEnabled(false);
         campoFecha.setEnabled(false);
         checkActivo.setEnabled(false);
+        comboTipoContrato.setEnabled(false);
     }
 
     private void habilitarCampos() {
@@ -138,6 +156,7 @@ public class VentanaActualizar extends JFrame {
         campoSalario.setEnabled(true);
         campoFecha.setEnabled(true);
         checkActivo.setEnabled(true);
+        comboTipoContrato.setEnabled(true);
     }
 
     private void buscarEmpleado() {

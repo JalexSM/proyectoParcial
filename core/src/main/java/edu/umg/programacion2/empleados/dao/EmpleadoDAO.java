@@ -73,7 +73,7 @@ public class EmpleadoDAO {
 	public boolean actualizar(Empleado empleado) throws SQLException {
 
 		String sql = "UPDATE empleados SET " + "nombre = ?, " + "departamento = ?, " + "salario = ?, "
-				+ "fecha_contratacion = ?, " + "activo = ? " + "WHERE id = ?";
+				+ "fecha_contratacion = ?, " + "activo = ?, " + "tipo_contrato = ? " + "WHERE id = ?";
 
 		try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
 				PreparedStatement statement = conexion.prepareStatement(sql)) {
@@ -83,7 +83,8 @@ public class EmpleadoDAO {
 			statement.setDouble(3, empleado.getSalario());
 			statement.setDate(4, java.sql.Date.valueOf(empleado.getFechaContratacion()));
 			statement.setBoolean(5, empleado.isActivo());
-			statement.setInt(6, empleado.getId());
+			statement.setString(6, empleado.getTipoContrato());
+			statement.setInt(7, empleado.getId());
 
 			return statement.executeUpdate() > 0;
 		}
@@ -106,7 +107,7 @@ public class EmpleadoDAO {
 	public Empleado buscarPorId(int id) throws SQLException {
 
 	    String sql = "SELECT id, nombre, departamento, salario, "
-	               + "fecha_contratacion, activo "
+	               + "fecha_contratacion, activo,tipo_contrato "
 	               + "FROM empleados WHERE id = ?";
 
 	    try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
@@ -125,7 +126,7 @@ public class EmpleadoDAO {
 	                    resultado.getDouble("salario"),
 	                    resultado.getDate("fecha_contratacion").toLocalDate(),
 	                    resultado.getBoolean("activo"),
-	                    resultado.getString("tipoContrato")
+	                    resultado.getString("tipo_Contrato")
 	                );
 
 	                return empleado;
