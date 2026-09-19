@@ -11,7 +11,7 @@ CREATE TABLE empleados (
     fecha_contratacion DATE NOT NULL,
     activo BOOLEAN NOT NULL
 );
-SHOW TABLES;
+
 INSERT INTO empleados
 (nombre, departamento, salario, fecha_contratacion, activo)
 VALUES
@@ -19,3 +19,9 @@ VALUES
 ('Carlos Roberto Mux', 'Ventas', 6200.00, '2023-08-10', TRUE),
 ('Diana Sofía Cabrera', 'Contabilidad', 7100.00, '2022-01-20', FALSE);
 SELECT * FROM empleados;
+
+ALTER TABLE empleados
+ADD COLUMN tipo_contrato VARCHAR(20)
+NOT NULL DEFAULT 'Permanente';
+
+SHOW TABLES;

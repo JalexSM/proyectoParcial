@@ -9,9 +9,10 @@ public class Empleado {
 	private double salario;
 	private LocalDate fechaContratacion;
 	private boolean activo;
+	private String tipoContrato;
 
 	public Empleado(int id, String nombre, String departamento, double salario, LocalDate fechaContratacion,
-			boolean activo) {
+			boolean activo, String tipoContrato) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -19,15 +20,25 @@ public class Empleado {
 		this.salario = salario;
 		this.fechaContratacion = fechaContratacion;
 		this.activo = activo;
+		this.tipoContrato = tipoContrato;
 	}
 
-	public Empleado(String nombre, String departamento, double salario, LocalDate fechaContratacion, boolean activo) {
+	public Empleado(String nombre, String departamento, double salario, LocalDate fechaContratacion, boolean activo, String tipoContrato) {
 
 		this.nombre = nombre;
 		this.departamento = departamento;
 		this.salario = salario;
 		this.fechaContratacion = fechaContratacion;
 		this.activo = activo;
+		this.tipoContrato = tipoContrato;
+	}
+
+	public String getTipoContrato() {
+		return tipoContrato;
+	}
+
+	public void setTipoContrato(String tipoContrato) {
+		this.tipoContrato = tipoContrato;
 	}
 
 	public int getId() {

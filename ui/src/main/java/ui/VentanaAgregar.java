@@ -26,6 +26,7 @@ public class VentanaAgregar extends JFrame {
 	private JTextField campoSalario;
 	private JTextField campoFecha;
 	private JCheckBox checkActivo;
+	private JComboBox<String> comboTipoContrato;
 
 	private EmpleadoDAO dao = new EmpleadoDAO();
 
@@ -43,7 +44,7 @@ public class VentanaAgregar extends JFrame {
 
 		JPanel panel = new JPanel();
 
-		panel.setLayout(new GridLayout(6, 2, 10, 10));
+		panel.setLayout(new GridLayout(7, 2, 10, 10));
 		Color fondo = new Color(236, 240, 241);
 		Color azul = new Color(52, 152, 219);
 		Color rojo = new Color(231, 76, 60);
@@ -71,9 +72,20 @@ public class VentanaAgregar extends JFrame {
 		JLabel etiquetaActivo = new JLabel("Estado:");
 		checkActivo = new JCheckBox("Activo");
 		checkActivo.setSelected(true);
+		
+		
+		JLabel lblTipoContrato = new JLabel("Tipo de contrato:");
+		comboTipoContrato = new JComboBox<>(
+		    new String[] {
+		        "Temporal",
+		        "Permanente",
+		        "Por hora"
+		    }
+		);
 
 		JButton botonGuardar = new JButton("Guardar");
 		JButton botonCancelar = new JButton("Cancelar");
+		
 
 		panel.add(etiquetaNombre);
 		panel.add(campoNombre);
@@ -89,6 +101,9 @@ public class VentanaAgregar extends JFrame {
 
 		panel.add(etiquetaActivo);
 		panel.add(checkActivo);
+		
+		panel.add(lblTipoContrato);
+		panel.add(comboTipoContrato);
 
 		panel.add(botonGuardar);
 		panel.add(botonCancelar);
@@ -148,6 +163,8 @@ public class VentanaAgregar extends JFrame {
 			String fechaTexto = campoFecha.getText().trim();
 
 			boolean activo = checkActivo.isSelected();
+			
+			String tipoContrato = (String) comboTipoContrato.getSelectedItem();
 
 			if (nombre.isEmpty()) {
 
@@ -186,7 +203,7 @@ public class VentanaAgregar extends JFrame {
 				return;
 			}
 
-			Empleado empleado = new Empleado(nombre, departamento, salario, fechaContratacion, activo);
+			Empleado empleado = new Empleado(nombre, departamento, salario, fechaContratacion, activo, tipoContrato);
 
 			dao.crear(empleado);
 

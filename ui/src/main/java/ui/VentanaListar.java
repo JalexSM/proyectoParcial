@@ -38,7 +38,7 @@ public class VentanaListar extends JFrame {
 
 	private void crearTabla() {
 
-		String[] columnas = { "ID", "Nombre", "Departamento", "Salario", "Fecha contratación", "Estado" };
+		String[] columnas = { "ID", "Nombre", "Departamento", "Salario", "Fecha contratación", "Estado","Tipo de Contrato" };
 
 		DefaultTableModel modelo = new DefaultTableModel(columnas, 0) {
 
@@ -85,7 +85,7 @@ public class VentanaListar extends JFrame {
 
 				Object[] fila = { empleado.getId(), empleado.getNombre(), empleado.getDepartamento(),
 						empleado.getSalario(), empleado.getFechaContratacion(),
-						empleado.isActivo() ? "Activo" : "Inactivo" };
+						empleado.isActivo() ? "Activo" : "Inactivo", empleado.getTipoContrato() };
 
 				modelo.addRow(fila);
 			}

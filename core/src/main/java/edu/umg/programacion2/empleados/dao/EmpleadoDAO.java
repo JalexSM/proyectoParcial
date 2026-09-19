@@ -19,8 +19,8 @@ public class EmpleadoDAO {
 
 	public int crear(Empleado empleado) throws SQLException {
 
-		String sql = "INSERT INTO empleados " + "(nombre, departamento, salario, fecha_contratacion, activo) "
-				+ "VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO empleados " + "(nombre, departamento, salario, fecha_contratacion, activo,tipo_Contrato) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 
 		try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
 				PreparedStatement statement = conexion.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -30,6 +30,7 @@ public class EmpleadoDAO {
 			statement.setDouble(3, empleado.getSalario());
 			statement.setDate(4, java.sql.Date.valueOf(empleado.getFechaContratacion()));
 			statement.setBoolean(5, empleado.isActivo());
+			statement.setString(6, empleado.getTipoContrato());
 
 			statement.executeUpdate();
 
@@ -48,8 +49,8 @@ public class EmpleadoDAO {
 
 		List<Empleado> empleados = new ArrayList<>();
 
-		String sql = "SELECT id, nombre, departamento, salario, fecha_contratacion, activo " + "FROM empleados "
-				+ "ORDER BY id";
+		String sql = "SELECT id, nombre, departamento, salario, fecha_contratacion, activo, tipo_contrato  " + "FROM empleados  "
+				+  "ORDER BY id";
 
 		try (Connection conexion = DriverManager.getConnection(URL, USUARIO, PASSWORD);
 				PreparedStatement statement = conexion.prepareStatement(sql);
@@ -59,7 +60,8 @@ public class EmpleadoDAO {
 
 				Empleado empleado = new Empleado(resultado.getInt("id"), resultado.getString("nombre"),
 						resultado.getString("departamento"), resultado.getDouble("salario"),
-						resultado.getDate("fecha_contratacion").toLocalDate(), resultado.getBoolean("activo"));
+						resultado.getDate("fecha_contratacion").toLocalDate(), resultado.getBoolean("activo"),
+						resultado.getString("tipo_Contrato"));
 
 				empleados.add(empleado);
 			}
@@ -122,7 +124,8 @@ public class EmpleadoDAO {
 	                    resultado.getString("departamento"),
 	                    resultado.getDouble("salario"),
 	                    resultado.getDate("fecha_contratacion").toLocalDate(),
-	                    resultado.getBoolean("activo")
+	                    resultado.getBoolean("activo"),
+	                    resultado.getString("tipoContrato")
 	                );
 
 	                return empleado;

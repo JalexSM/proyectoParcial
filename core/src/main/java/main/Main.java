@@ -182,8 +182,9 @@ public class Main {
 			double salario = leerSalario();
 			LocalDate fecha = leerFecha();
 			boolean activo = leerActivo();
+			String tipoContrato= leerTexto("tipo");
 
-			Empleado empleado = new Empleado(0, nombre, departamento, salario, fecha, activo);
+			Empleado empleado = new Empleado(0, nombre, departamento, salario, fecha, activo,tipoContrato);
 
 			int id = empleadoDAO.crear(empleado);
 
@@ -220,8 +221,12 @@ public class Main {
 		System.out.print("¿Activo? (true/false): ");
 		boolean activo = teclado.nextBoolean();
 		teclado.nextLine();
+		
+		
+		System.out.print("tipo contrato: ");
+		String tipoContrato = teclado.nextLine();
 
-		Empleado empleado = new Empleado(id, nombre, departamento, salario, fechaContratacion, activo);
+		Empleado empleado = new Empleado(id, nombre, departamento, salario, fechaContratacion, activo,tipoContrato);
 
 		try {
 
